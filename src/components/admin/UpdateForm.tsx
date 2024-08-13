@@ -40,6 +40,22 @@ const UpdateForm: React.FC<UpdateFormProps> = ({ title, onUpdate, onCancel }) =>
     setFormData({ ...formData, [e.target.name]: e.target.value || '' });
   };
 
+  const handleImageChange = (index: number, value: string) => {
+    const newImages = [...formData.images];
+    newImages[index] = value;
+    setFormData({ ...formData, images: newImages });
+  };
+
+  const addImageField = () => {
+    setFormData({ ...formData, images: [...formData.images, ''] });
+  };
+
+  const removeImageField = (index: number) => {
+    const newImages = [...formData.images];
+    newImages.splice(index, 1);
+    setFormData({ ...formData, images: newImages });
+  };
+
   return (
     <div className="flex flex-col items-center justify-center h-screen dark:bg-gray-900 dark:text-white">
       <div className="bg-gray-800 p-8 rounded shadow-md w-full max-w-md">
@@ -54,7 +70,7 @@ const UpdateForm: React.FC<UpdateFormProps> = ({ title, onUpdate, onCancel }) =>
           disabled
         />
         {Object.keys(formData).map((key) => (
-          key !== 'title' && key !== '_id' && (
+          key !== 'title' && key !== '_id' && key !== 'images' && (
             <input
               key={key}
               type="text"
@@ -66,6 +82,35 @@ const UpdateForm: React.FC<UpdateFormProps> = ({ title, onUpdate, onCancel }) =>
             />
           )
         ))}
+        
+        {/* Image Links */}
+        <div className="mb-4">
+          <h2 className="text-lg font-bold mb-2">Carousel Images</h2>
+          {formData.images && formData.images.map((image: string, index: number) => (
+            <div key={index} className="flex mb-2">
+              <input
+                type="text"
+                value={image}
+                onChange={(e) => handleImageChange(index, e.target.value)}
+                placeholder={`Image ${index + 1} URL`}
+                className="w-full p-2 rounded dark:bg-gray-700 dark:text-white"
+              />
+              <button
+                onClick={() => removeImageField(index)}
+                className="ml-2 bg-red-500 text-white p-2 rounded hover:bg-red-700"
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+          <button
+            onClick={addImageField}
+            className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-700"
+          >
+            Add Image Link
+          </button>
+        </div>
+        
         <button
           onClick={handleSubmit}
           className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-700 mb-4"

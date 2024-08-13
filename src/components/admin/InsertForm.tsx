@@ -13,7 +13,7 @@ const InsertForm: React.FC<InsertFormProps> = ({ onSave, onCancel }) => {
   const [posterDescription, setPosterDescription] = useState('');
   const [posterUrl, setPosterUrl] = useState('');
   const [carouselDescription, setCarouselDescription] = useState('');
-  const [images, setImages] = useState('');
+  const [images, setImages] = useState<string[]>(['']);
   const [firstVideoDescription, setFirstVideoDescription] = useState('');
   const [secondVideoDescription, setSecondVideoDescription] = useState('');
   const [lastVideoDescription, setLastVideoDescription] = useState('');
@@ -33,7 +33,7 @@ const InsertForm: React.FC<InsertFormProps> = ({ onSave, onCancel }) => {
         posterDescription,
         posterUrl,
         carouselDescription,
-        images: images.split(','),
+        images: images.filter(url => url.trim() !== ''), // Filter out empty strings
         firstVideoDescription,
         secondVideoDescription,
         lastVideoDescription,
@@ -45,6 +45,22 @@ const InsertForm: React.FC<InsertFormProps> = ({ onSave, onCancel }) => {
     } catch (error) {
       console.error("Error saving song:", error);
     }
+  };
+
+  const handleImageChange = (index: number, value: string) => {
+    const newImages = [...images];
+    newImages[index] = value;
+    setImages(newImages);
+  };
+
+  const addImageField = () => {
+    setImages([...images, '']);
+  };
+
+  const removeImageField = (index: number) => {
+    const newImages = [...images];
+    newImages.splice(index, 1);
+    setImages(newImages);
   };
 
   return (
@@ -80,51 +96,76 @@ const InsertForm: React.FC<InsertFormProps> = ({ onSave, onCancel }) => {
           onChange={(e) => setCarouselDescription(e.target.value)}
           className="w-full p-2 border rounded mb-4"
         />
+
+        {/* Dynamic Image Links */}
+        <div className="mb-4">
+          <h2 className="text-lg font-bold mb-2">Carousel Images</h2>
+          {images.map((image, index) => (
+            <div key={index} className="flex mb-2">
+              <input
+                type="text"
+                value={image}
+                onChange={(e) => handleImageChange(index, e.target.value)}
+                placeholder={`Image ${index + 1} URL`}
+                className="w-full p-2 rounded dark:bg-gray-700 dark:text-white"
+              />
+              {images.length > 1 && (
+                <button
+                  onClick={() => removeImageField(index)}
+                  className="ml-2 bg-red-500 text-white p-2 rounded hover:bg-red-700"
+                >
+                  Remove
+                </button>
+              )}
+            </div>
+          ))}
+          <button
+            onClick={addImageField}
+            className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-700"
+          >
+            Add Image Link
+          </button>
+        </div>
+
+        {/* Video Descriptions and URLs */}
         <input
           type="text"
-          placeholder="Images (comma separated URLs)"
-          value={images}
-          onChange={(e) => setImages(e.target.value)}
-          className="w-full p-2 border rounded mb-4"
-        />
-        <input
-          type="text"
-          placeholder="First Video Description"
+          placeholder="Trailer Description"
           value={firstVideoDescription}
           onChange={(e) => setFirstVideoDescription(e.target.value)}
           className="w-full p-2 border rounded mb-4"
         />
         <input
           type="text"
-          placeholder="Second Video Description"
+          placeholder="BTS Video Description"
           value={secondVideoDescription}
           onChange={(e) => setSecondVideoDescription(e.target.value)}
           className="w-full p-2 border rounded mb-4"
         />
         <input
           type="text"
-          placeholder="Last Video Description"
+          placeholder="Official Video Description"
           value={lastVideoDescription}
           onChange={(e) => setLastVideoDescription(e.target.value)}
           className="w-full p-2 border rounded mb-4"
         />
         <input
           type="text"
-          placeholder="First Video URL"
+          placeholder="Trailer Video URL"
           value={firstVideoUrl}
           onChange={(e) => setFirstVideoUrl(e.target.value)}
           className="w-full p-2 border rounded mb-4"
         />
         <input
           type="text"
-          placeholder="Second Video URL"
+          placeholder="BTS Video URL"
           value={secondVideoUrl}
           onChange={(e) => setSecondVideoUrl(e.target.value)}
           className="w-full p-2 border rounded mb-4"
         />
         <input
           type="text"
-          placeholder="Last Video URL"
+          placeholder="Official Video URL"
           value={lastVideoUrl}
           onChange={(e) => setLastVideoUrl(e.target.value)}
           className="w-full p-2 border rounded mb-4"
