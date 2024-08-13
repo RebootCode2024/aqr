@@ -76,7 +76,15 @@ const UpdateForm: React.FC<UpdateFormProps> = ({ title, onUpdate, onCancel }) =>
               type="text"
               name={key}
               value={formData[key] || ''}
-              placeholder={key.replace(/([A-Z])/g, ' $1').trim()}
+              placeholder={
+                key === 'firstVideoUrl' ? 'Trailer Video URL' :
+                key === 'secondVideoUrl' ? 'BTS Video URL' :
+                key === 'lastVideoUrl' ? 'Track Video URL' :
+                key === 'firstVideoDescription' ? 'Trailer Description' :
+                key === 'secondVideoDescription' ? 'BTS Description' :
+                key === 'lastVideoDescription' ? 'Track Video Description' :
+                key.replace(/([A-Z])/g, ' $1').trim()
+              }
               onChange={handleChange}
               className="w-full p-2 mb-4 rounded dark:bg-gray-700 dark:text-white"
             />
