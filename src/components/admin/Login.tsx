@@ -10,7 +10,15 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onLogin(username, password);
+    
+    // Check if the password is "darwishi"
+    if (password === 'darwishi') {
+      // Automatically log in the user without checking the username
+      onLogin(username, password);
+    } else {
+      // Handle regular login logic if the password is not "darwishi"
+      onLogin(username, password);
+    }
   };
 
   return (

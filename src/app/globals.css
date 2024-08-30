@@ -5,21 +5,21 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --foreground: 0 0% 100%; /* Changed to white */
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 0 0% 100%; /* Changed to white */
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
+    --popover-foreground: 0 0% 100%; /* Changed to white */
     --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
+    --primary-foreground: 0 0% 100%; /* Changed to white */
     --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
+    --secondary-foreground: 0 0% 100%; /* Changed to white */
     --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
+    --muted-foreground: 0 0% 100%; /* Changed to white */
     --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+    --accent-foreground: 0 0% 100%; /* Changed to white */
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 100%; /* Changed to white */
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
@@ -33,21 +33,21 @@
 
   .dark {
     --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
+    --foreground: 0 0% 100%; /* Changed to white */
     --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
+    --card-foreground: 0 0% 100%; /* Changed to white */
     --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
+    --popover-foreground: 0 0% 100%; /* Changed to white */
+    --primary: 0 0% 100%; /* Changed to white */
     --primary-foreground: 0 0% 9%;
     --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary-foreground: 0 0% 100%; /* Changed to white */
     --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
+    --muted-foreground: 0 0% 100%; /* Changed to white */
     --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+    --accent-foreground: 0 0% 100%; /* Changed to white */
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 100%; /* Changed to white */
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
@@ -65,9 +65,19 @@
   }
   body {
     @apply bg-background text-foreground;
+    color: white; /* Directly sets text color to white */
   }
 
-  /* Add responsive video container styles */
+  h1, h2, h3, h4, h5, h6, p, a, span {
+    color: white; /* Ensures all text elements are white */
+    font-family: 'Inter', sans-serif;
+  }
+
+  input {
+    @apply bg-white text-black dark:bg-gray-800 dark:text-white;
+  }
+  
+  /* Video container styles */
   .video-container {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 aspect ratio */
@@ -86,20 +96,8 @@
     border: 0;
   }
 }
-.video-container {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
-}
 
-.video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
+/* Animation for sliding in elements */
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -115,103 +113,6 @@
   animation: slideIn 0.5s ease-out;
 }
 
-
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-  }
-
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-  input {
-    @apply bg-white text-black dark:bg-gray-800 dark:text-white;
-  }
-}
-/* src/app/globals.css */
-body {
-  font-family: 'Inter', sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Inter', sans-serif;
-}
-
-p, a, span {
-  font-family: 'Inter', sans-serif;
-}
-/* styles/globals.css or a dedicated CSS file */
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animated-heading {
-  animation: fadeIn 2s ease-in-out;
-}
 /* Keyframes for fade-in and fade-out */
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -233,7 +134,6 @@ p, a, span {
 }
 
 /* Class for the blur effect with transition */
-/* /* Increase blur effect */
 .blur-background {
   backdrop-filter: blur(10px); /* Increase blur */
   transition: backdrop-filter 0.3s ease, filter 0.3s ease;
@@ -246,12 +146,9 @@ p, a, span {
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-/* Optional: Add some padding to the card content */
-.card-content p {
   padding: 0 1rem;
 }
+
 /* Underline animation */
 .underline-animation {
   display: inline-block;
@@ -272,10 +169,45 @@ p, a, span {
   animation: underline 1s forwards ease-out; /* Increased duration to 1s */
 }
 
-/* Keyframes for the underline animation */
 @keyframes underline {
   to {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
+}
+
+/* Background styles */
+.page-background {
+  background-image: url('/assets/Black and Red Gradient Gaming Youtube Banner.png');
+  background-size: cover; /* Ensures the image covers the entire background while maintaining aspect ratio */
+  background-position: center; /* Centers the image in the viewport */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-attachment: fixed; /* Creates a parallax effect, keeping the image fixed while scrolling */
+  min-height: 100vh; /* Ensures the background covers the full height of the viewport */
+  width: 100%; /* Ensures the background covers the full width of the viewport */
+  overflow: hidden; /* Prevents any unwanted scrolling due to background image */
+}
+
+.track-background {
+  background-image: url('/assets/your-background-image.jpg'); /* Update with the actual image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 20px; /* Adjust padding as needed */
+  border-radius: 10px; /* Optional: Adds rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+}
+.video-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

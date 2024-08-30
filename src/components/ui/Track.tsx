@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { 
@@ -60,9 +58,9 @@ const Track: React.FC<SongData> = ({
   }, []);
 
   return (
-    <div className="border border-black rounded-lg p-4 bg-white shadow-lg m-4 text-center flex flex-col items-center w-full">
-      <h2 className="text-2xl font-bold mb-2">{title}</h2>
-      <h3 className="mb-4 text-center">{description}</h3>
+    <div className="track-background border-white border-4 rounded-lg p-4 shadow-2xl m-4 text-center flex flex-col items-center w-full">
+      <h2 className="text-2xl font-bold mb-2 text-white">{title}</h2>
+      <h3 className="mb-4 text-center text-white">{description}</h3>
       <div className="flex justify-center w-full max-w-2xl">
         <Image
           src={posterUrl}
@@ -72,7 +70,7 @@ const Track: React.FC<SongData> = ({
           className="rounded-lg w-full h-auto"
         />
       </div>
-      <h2 className="mt-4 mb-2 text-center">{carouselDescription}</h2>
+      <h2 className="mt-4 mb-2 text-center text-white">{carouselDescription}</h2>
       <div className="w-full mt-4 flex justify-center">
         <Carousel className="relative w-full max-w-2xl">
           <CarouselContent className="flex w-full">
@@ -88,14 +86,14 @@ const Track: React.FC<SongData> = ({
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="text-black" />
-          <CarouselNext className="text-black" />
+          <CarouselPrevious className="text-white" />
+          <CarouselNext className="text-white" />
         </Carousel>
       </div>
       <div className="w-full mt-4 flex flex-col items-center space-y-4">
         {firstVideoUrl && (
           <>
-            <p className="text-center text-lg mb-2">{firstVideoDescription}</p>
+            <p className="text-center text-lg mb-2 text-white">{firstVideoDescription}</p>
             <div className="video-container">
               <iframe
                 src={embedUrl(firstVideoUrl)}
@@ -109,7 +107,7 @@ const Track: React.FC<SongData> = ({
         )}
         {secondVideoUrl && (
           <>
-            <p className="text-center text-lg mb-2">{secondVideoDescription}</p>
+            <p className="text-center text-lg mb-2 text-white">{secondVideoDescription}</p>
             <div className="video-container">
               <iframe
                 src={embedUrl(secondVideoUrl)}
@@ -123,7 +121,7 @@ const Track: React.FC<SongData> = ({
         )}
         {lastVideoUrl && (
           <>
-            <p className="text-center text-lg mb-2">{lastVideoDescription}</p>
+            <p className="text-center text-lg mb-2 text-white">{lastVideoDescription}</p>
             <div className="video-container">
               <iframe
                 src={embedUrl(lastVideoUrl)}

@@ -62,7 +62,7 @@ const MyApp: React.FC = () => {
   if (songs.length === 0) return <div>Loading...</div>;
 
   return (
-    <>
+    <div className="page-background">
       <Navbar onAboutUsClick={handleAboutUsClick} />
       {showAboutUs && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-20" onClick={handleCloseAboutUs}>
@@ -73,7 +73,7 @@ const MyApp: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl font-bold mb-4">About Us</h2>
+            <h2 className="text-2xl font-bold mb-4 text-white">About Us</h2>
             <p className="mb-4 card-content">
               ‘Aquaregia’ just like its chemical namesake has brought together <span className="underline-animation">Shivi</span>, the singer/composer and <span className="underline-animation">Gunjan</span>, the songwriter to manifest the beauty of the universe in the form of music and poetry, which otherwise might have been a long shot for both on their own.
             </p>
@@ -83,7 +83,7 @@ const MyApp: React.FC = () => {
       )}
       <main className="mt-24 flex flex-col items-center px-4 md:px-8">
         <motion.h1
-          className="text-3xl font-bold text-black dark:text-white mt-10"
+          className="text-3xl font-bold text-black text-white mt-3"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -96,7 +96,7 @@ const MyApp: React.FC = () => {
           ))}
         </div>
       </main>
-    </>
+    </div>
   );
 };
 
