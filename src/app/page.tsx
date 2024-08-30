@@ -73,17 +73,17 @@ const MyApp: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl font-bold mb-4 text-white">About Us</h2>
-            <p className="mb-4 card-content">
+            <h2 className="text-2xl font-bold mb-4 text-black">About Us</h2>
+            <p className="mb-4 card-content text-black">
               ‘Aquaregia’ just like its chemical namesake has brought together <span className="underline-animation">Shivi</span>, the singer/composer and <span className="underline-animation">Gunjan</span>, the songwriter to manifest the beauty of the universe in the form of music and poetry, which otherwise might have been a long shot for both on their own.
             </p>
-            <p>Hoping to touch as many lives as possible... and maybe a few hearts too.</p>
+            <p className="text-black">Hoping to touch as many lives as possible... and maybe a few hearts too.</p>
           </motion.div>
         </div>
       )}
-      <main className="mt-24 flex flex-col items-center px-4 md:px-8">
+      <main className="mt-10 flex flex-col items-center px-4 md:px-8">
         <motion.h1
-          className="text-3xl font-bold text-black text-white mt-3"
+          className="text-3xl font-bold text-white mt-20"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}

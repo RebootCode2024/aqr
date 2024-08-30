@@ -29,7 +29,7 @@ const AboutUs: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     >
       <motion.div
         ref={cardRef}
-        className="bg-white p-6 rounded-lg shadow-lg card-fade-in max-w-md card-content"
+        className="bg-black text-white p-6 rounded-lg shadow-lg card-fade-in max-w-md card-content"
         initial={{ scale: 0.8 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0.8 }}
